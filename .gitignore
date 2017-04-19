@@ -1,0 +1,3 @@
+vendor/
+public/mongodbconnect.php
+public/dbconnect.php

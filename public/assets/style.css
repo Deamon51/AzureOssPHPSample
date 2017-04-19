@@ -1,0 +1,248 @@
+@charset "utf-8";
+/* CSS Document */
+
+*
+{
+	margin:0;
+	padding:0;
+}
+body{
+    background-color: #eaedf3;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.signInBlock{
+    background-color: #FFFFFF;
+    width:500px;
+    height:180px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+.signUpBlock{
+    background-color: #FFFFFF;
+    width: 400px;
+    height: 230px;
+    margin: auto;
+    margin-top: 100px;
+}
+.signInTitle{
+    text-align: center;
+    color:#0072c6;
+}
+input:focus{
+    outline: none;
+}
+.signInInput{
+    padding-top: 25px;
+    text-align: center;    
+}
+.signInInput>input{
+    border: none;
+    border-bottom: 1px solid #E9E9E9;
+    width:150px;
+    height: 30px;
+    margin-left: 15px;
+    padding-left: 5px;
+}
+.signUpInput{
+    padding-top: 25px;
+    text-align: center;    
+}
+.signUpInput>input{
+    border: none;
+    width:150px;
+    height: 30px;
+    margin-left: 15px;
+    padding-left: 5px;
+    border-bottom: solid 1px #e9E9E9;
+}
+.signInSubmit{
+    float: right;
+    padding-top: 15px;
+    padding-right: 20px;
+}
+.btn-submit{
+    width: 60px;
+}
+button[type="submit"]{
+    border: none;
+    /*width: 60px;*/
+    height: 30px;
+    cursor:pointer;
+    background-color: #eaedf3;
+}
+button:hover{
+    background-color: #0072c6 !important;
+    color:#fff;
+}
+.registerLink{
+    font-size: 12px;
+    color: #0072c6;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+header{
+    background-color: #1a1a1a;
+    height: 40px;
+    width: 100%;
+    top:0px;
+    position: fixed;
+}
+
+.headerLegend{
+    height: 40px;
+    float: right;
+    margin-right: 15px;
+}
+
+.headerUsername{
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #0072c6;
+}
+
+ul{
+    list-style: none;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.menu{
+    list-style: none;
+    margin-top: 10px;
+}
+.menu>li{
+    float:right;
+    margin-left: 10px;
+}
+
+.settingsImg{
+    margin-right: 15px;
+    width: 20px;
+    cursor: pointer;
+}
+
+#settings{
+    float: right;
+    margin-top: 40px;
+    background-color: #1a1a1a;
+    width: 150px;
+    height: 80px;
+    display: none;
+}
+
+#settings>ul>li>a{
+    color:#FFF;
+    font-size: 14px;
+}
+
+#settings>ul>li>a:hover, #settings>ul>li>a:active{
+    color:#0072c6;
+    font-size: 14px;
+}
+#settings>ul>li{
+    margin-top: 4px;
+}
+#settings>ul>li:hover, #settings>ul>li:active{
+    background-color: #000;
+}
+.noteInput{
+    padding-top: 25px;
+    text-align: center;    
+}
+.noteInput>textarea{
+    border: none;
+    width:320px;
+    height: 55px;
+    max-height: 55px;
+    max-width: 320px;
+}
+textarea {
+    border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.btn-notePost{
+    width:60px;
+}
+.noNote{
+    padding-top: 50px;
+    font-size: 18px;
+    text-align: center;
+    font-style: italic;
+}
+.takeNoteBlock{
+    background-color: #fff;
+    width:500px;
+    height:180px;
+    margin-left: 450px;
+    margin-top: 100px;
+    -webkit-box-shadow: 1px -1px 53px 5px rgba(0,0,0,0.45);
+    -moz-box-shadow: 1px -1px 53px 5px rgba(0,0,0,0.45);
+    box-shadow: 1px -1px 53px 5px rgba(0,0,0,0.45);
+}
+.notesBlock{
+    background-color: rgba(255, 255, 255, 0.3); 
+    width: 800px;
+    min-height: 80px;
+    max-height: 100%;
+    margin-left: 320px;
+    margin-top: 100px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.noteBlock{
+    margin-left: 15px;
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    border-bottom: solid 1px #eaedf3;
+}
+.noteBlock > a{
+    color: #333;
+    opacity: 0.7;
+    text-decoration: none;
+}
+.notesListBlock{
+    width: 280px;
+    height: 630px;
+    position: fixed;
+    margin-top: 100px;
+    background-color: #FFFFFF;
+}
+.trash{
+    width: 20px;
+    float: right;
+    display:none;
+}
+.noteBlock:hover > a> .trash{ 
+    display: block;
+}
+.fullNoteBlock{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.fullNoteBlock:focus{
+    outline: none !important;
+}
+.btn-noteEdit{
+    float:right;
+    margin-right: 10px;
+    display:none;
+    padding: 5px;
+    background-color: #FFF !important;
+}
+.fullNoteBlock:focus ~ .btn-noteEdit, .btn-noteEdit:hover{
+    display: block;
+}
+#textareaNone{
+    display: none;
+}
