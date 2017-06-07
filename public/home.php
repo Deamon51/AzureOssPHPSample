@@ -2,10 +2,12 @@
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'on');
 require '../vendor/autoload.php';
+
 session_start();
 ob_start(); 
 include_once 'dbconnect.php';
 include_once 'mongodbconnect.php';
+//require 'textanalytics.php';
 
 if (!isset($_SESSION['userSession'])) {
  header("Location: index.php");
@@ -35,8 +37,7 @@ if (isset($_POST['btn-noteEdit'])) {
   header("Location: home.php");
   unset($_POST['noteEdit']);
 }
-
-echo $_GET['id'];   
+  
 ?>
 <!DOCTYPE html>
 <html>
@@ -94,7 +95,7 @@ echo $_GET['id'];
     ?>   
     </div>
   </div>
-  <div class="takeNoteBlock">  
+  <div class="takeNoteBlock" <?php if (!empty($_GET['id'])){ echo 'style="display:none;"'; } ?>>  
       <form method="post" >
         <h2 class="signInTitle">Take note.</h2>
       <div class="noteInput"> 
@@ -113,8 +114,10 @@ echo $_GET['id'];
           //echo $document['posted_at']->format('Y-m-d\TH:i:s.u');
   foreach ($cursor as $document){
   if ($document['_id'] == $_GET['id']) {
-      echo '<form method="post">
-      <div id="note'.$_GET['id'].'" class="fullNoteBlock" contenteditable="true">'.$document['note'].'
+      echo '<div>
+        <a href="home.php"><img class="back" src="images/restart.svg" alt="Back" title="Back to take a post"></a>  
+      </div><form method="post">
+      <div id="note'.$_GET['id'].'" class="fullNoteBlock" contenteditable="true" title="Tap to edit">'.$document['note'].'
       </div><textarea id="textareaNone" name="noteEdit"></textarea><button type="submit" name="btn-noteEdit" class="btn-noteEdit">Update</button></form>';
   }}
        if (!empty($document['note']) && empty($_GET['id'])) { 
@@ -124,8 +127,17 @@ echo $_GET['id'];
         echo '<p class="noNote"><b>Write a note</b><br/>Type your first note above</p>';
       }
     ?>
+    <?php 
+      if (!empty($_GET['id'])) {
+      echo '<div class="noteAnalyticsBlock">
+              <div class="noteAnalytics">
+                <span class="lskAnalytics">Language : '.$lngAnalytic.'</span>
+                <span class="lskAnalytics">Sentiment : '.$sntAnalytic.'</span>
+                <span class="lskAnalytics">Key Phrase : '.$kpAnalytic.'</span>
+              </div>
+            </div>';
+    } ?>
   </div>
-
 <div> 
   <script>
 $(function getContent(){
@@ -134,7 +146,7 @@ $(function getContent(){
         $('#textareaNone').val(mysave);
     });
 });
-function myFunction() {
+function deleteFunction() {
     return confirm('Are you sure you want to delete this note?');
     setTimeout(function () {
     window.location.reload(true);}, 0);
