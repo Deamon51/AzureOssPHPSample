@@ -1,6 +1,8 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 'on');
+//error_reporting(E_ALL);
+//ini_set('display_errors', 'on');
+
+include_once 'home.php';
 
 // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
 require_once 'HTTP/Request2.php';
@@ -27,8 +29,10 @@ $url->setQueryVariables($parameters);
 
 $request->setMethod(HTTP_Request2::METHOD_POST);
 
-//$document['note'];
-$document = 'hello';
+echo $document['note'];
+
+$document = $document['note'];
+//$document = 'hello';
 $json = '{
     "documents": [
     {
