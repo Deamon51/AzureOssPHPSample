@@ -8,6 +8,8 @@
 }
 body{
     background-color: #eaedf3;
+    background-image: url(../images/coffee-note.jpg);
+    background-size: cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .signInBlock{
@@ -97,7 +99,7 @@ header{
 }
 
 .headerUsername{
-    text-decoration: none;
+    text-decoration: none !important;
     text-transform: capitalize;
     color: #0072c6;
 }
@@ -107,7 +109,7 @@ ul{
     text-align: center;
 }
 a{
-    text-decoration: none;
+    text-decoration: none !important;
     cursor: pointer;
 }
 .menu{
@@ -256,7 +258,7 @@ textarea {
 }
 .noteAnalytics {
     text-align: center;
-    display: block;
+    display: flex;
     margin-left: auto;
     margin-right: auto;
     width: 500px;
@@ -268,4 +270,11 @@ textarea {
     padding: 5px 5px 5px 5px;
     border-radius: 10px;
     margin-left: 10px;
+}
+.notepadBG{
+    width: 250px;
+    height: 250px;
+    float: right;
+    margin-top: 50px;
+    opacity: 0.4;
 }

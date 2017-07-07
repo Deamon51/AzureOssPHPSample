@@ -1,6 +1,5 @@
 <?php
 // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
-require_once 'HTTP/Request2.php';
 
 $request = new Http_Request2('https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment');
 $url = $request->getUrl();
@@ -22,13 +21,18 @@ $url->setQueryVariables($parameters);
 
 $request->setMethod(HTTP_Request2::METHOD_POST);
 
-$document = 'Hello ! I am verry happy';
-$json = '{
+$cursor = $collection->find();
+foreach ($cursor as $document){
+if ($document['_id'] == $_GET['id']) {    
+    $document = $document['note'];
+    $json = '{
     "documents": [
     {
     "id": "1",
     "text": '.json_encode($document).'
 }]}';
+}
+}
 // Request body
 $request->setBody($json);
 
@@ -36,7 +40,7 @@ $request->setBody($json);
 try
 {
     $response = $request->send();
-    echo $response->getBody();
+    $response->getBody();
 
     $postJson =  $response->getBody();
     $name = json_decode($postJson, true);
@@ -45,6 +49,15 @@ try
 
     $percent = round((float)$number * 100 ) . '%';
     $sntAnalytic = $percent;
+    if ($sntAnalytic < 50 ){
+       $sntAnalyticSmiley = ':(';
+    }
+    elseif ($sntAnalytic > 50 ){
+    $sntAnalyticSmiley = ':)';
+    }
+    else {
+        $sntAnalyticSmiley = ':|';
+    }
 }
 catch (HttpException $ex)
 {

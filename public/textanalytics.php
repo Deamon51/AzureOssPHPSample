@@ -1,9 +1,6 @@
 <?php
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'on');
-
-include_once 'home.php';
-
 // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
 require_once 'HTTP/Request2.php';
 
@@ -29,16 +26,22 @@ $url->setQueryVariables($parameters);
 
 $request->setMethod(HTTP_Request2::METHOD_POST);
 
-echo $document['note'];
 
-$document = $document['note'];
-//$document = 'hello';
-$json = '{
+
+$cursor = $collection->find();
+foreach ($cursor as $document){
+if ($document['_id'] == $_GET['id']) {    
+    $document = $document['note'];
+    $json = '{
     "documents": [
     {
     "id": "1",
     "text": '.json_encode($document).'
 }]}';
+}
+}
+  
+
 
 // Request body
 $request->setBody($json);
@@ -47,7 +50,7 @@ $request->setBody($json);
 try
 {
     $response = $request->send();
-    echo $response->getBody();
+    $response->getBody();
     
     $postJson =  $response->getBody();
     $name = json_decode($postJson, true);
